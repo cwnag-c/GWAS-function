@@ -1,0 +1,18 @@
+gwas_function_v1.0：  仅有数据清洗功能
+gwas_function_v1.1： 2024.04.07：添加了TwosampleMR 和SMR功能
+gwas_function_v1.2：2024.4.15：添加了mbat-combo功能（SNP map to Gene）：R语言环境跑，以及如果跑过了，会跳过以及提示。之后SMR也要加入这个功能
+gwas_function_v1.3：2024.4.20: GWAS清洗对队列数据快速清洗以及节省内存
+				     2024.4.22： 3.1/3.2/3.3数据清洗功能，第1162行增加 mutate(EAF=round(BETA,4)) %>%  mutate(EAF=round(SE,4))，目的：调整小数点，减少内存。
+
+gwas_function_v1.3：  2024.5.4： 3.1/3.2/3.3数据清洗功能，第1162行增加 mutate(EAF=round(BETA,4)) %>%  mutate(EAF=round(SE,4))，剔除，代码错误
+gwas_function_v1.4：2024.5.6：新增SMR-multi和SMR-trans，具体看杨剑老师的smr，只是把他smr的功能内嵌进来。在SMR的R代码里分别加了”--smr-multi “和”--trans“，其余未变动
+gwas_function_v1.5：2024.7.7:新增了placo功能
+gwas_function_v1.6：2024.7.12:twosamplemr中加入了MR PRESSO功能，用is_presso=T来启动
+gwas_function_v1.7：2024.7.13: GWAS_heterogeneity_lasso_ivw功能，对于twosamplemr结果，异质性大的，去做lasso，去掉异质性的snp，再重新ivw分析
+gwas_function_v1.8：2024.7.17: 新增GWAS_7z功能：调用写好的7z解压的python脚本，在windows中解压zip文件
+                                                         4.1 twosampleMR下 新增pheGWAS_twosampleMR_iv功能，针对pheGWAS的数据的工具变量的生成
+							 剔除3.4的phe-gwas清洗功能（待后续完善后在增加）
+gwas_function_v1.8.1: 2024.7.23: SNP2GENE的SMR，SMR-multi，SMR-trans增加了提示功能，如果存在这个文件夹，就默认为已经分析过，跳过不分析；方便后面gwas全扫
+gwas_function_v1.8.2: 2024.7.24： GWAS_map_chrpos，GWAS_map_snp，GWAS_liftover_hg38to37，GWAS_liftover_hg37to38的function，为避免gwas读进来的chr列不是数值，增加了一行gwas_f1 %<>%mutate(CHR=as.integer(CHR))###默认转化为int
+								GWAS_map_snp，GWAS_liftover_hg38to37的function，为避免gwas读进来的A1和A2为小写，增加了转化成大写的代码    
+									mutate(A1=toupper(A1)) %>%  mutate(A2=toupper(A2)) %>% 
