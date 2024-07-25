@@ -16,3 +16,9 @@ gwas_function_v1.8.1: 2024.7.23: SNP2GENE的SMR，SMR-multi，SMR-trans增加了
 gwas_function_v1.8.2: 2024.7.24： GWAS_map_chrpos，GWAS_map_snp，GWAS_liftover_hg38to37，GWAS_liftover_hg37to38的function，为避免gwas读进来的chr列不是数值，增加了一行gwas_f1 %<>%mutate(CHR=as.integer(CHR))###默认转化为int
 								GWAS_map_snp，GWAS_liftover_hg38to37的function，为避免gwas读进来的A1和A2为小写，增加了转化成大写的代码    
 									mutate(A1=toupper(A1)) %>%  mutate(A2=toupper(A2)) %>% 
+
+								GWAS_map_chrpos，GWAS_map_snp增加了    MAP_file %<>%  mutate(chr=as.integer(chr)) %>%   rename(SNP=rsmid,CHR=chr,POS=pos)，因为snp匹配chr和pos的文件和后面的文件统一了，且直接从easyqc下载就可以读取，不需要在额外更改。
+                          2024.7.25： 发现GWAS_map_chrpos 报错“CHR = as.integer(CHR)”，因为没有chr，所以不需要这个功能，把涉及的代码到的都删去了
+
+gwas_function_v1.8.3: GWAS_twosampleMR中增加工具变量过滤（is_steiger=F 默认不开启） if(is_steiger){dat %<>% dplyr::filter(steiger_dir=="TRUE")}
+gwas_function_v1.9: 增加了GSMR2的功能；PLACO中去除MHC变为可选，默认去除
