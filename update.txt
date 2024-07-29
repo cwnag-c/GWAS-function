@@ -22,3 +22,5 @@ gwas_function_v1.8.2: 2024.7.24： GWAS_map_chrpos，GWAS_map_snp，GWAS_liftove
 
 gwas_function_v1.8.3: GWAS_twosampleMR中增加工具变量过滤（is_steiger=F 默认不开启） if(is_steiger){dat %<>% dplyr::filter(steiger_dir=="TRUE")}
 gwas_function_v1.9: 增加了GSMR2的功能；PLACO中去除MHC变为可选，默认去除
+gwas_function_v1.9.1:  twosampleMR中，发现mr_pressoy工具变量为3个时报错，提示工具变量数量不足，故把条件调整成四个及以上时才进行mr_presso
+gwas_function_v1.10.0: SMR增加 一个功能：如果qtl是分染色体的，那么也能运行。需要smr_type="seperate chr"，以及指定qtl的染色体号seperate_chr
