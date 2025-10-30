@@ -1,0 +1,1 @@
+gwas_mr_v1.1：GWAS_twosampleMR_iv和pheGWAS_twosampleMR_iv，exposure的工具变量在clump前先和outcome的snp 取个交集，防止clump后的snp不在outcome里

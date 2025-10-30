@@ -1,0 +1,3 @@
+gwas_mr_v1.2: 在GWAS_twosampleMR_iv中增加了直接输入gwas也能跑工具变量。
+
+在MR中，exposure的工具变量clump后，可能不在outcome中，那么这个工具变量在merge的时候会遗失，正确的应该是先merge两个GWAS共有的snp，然后在clump。在gwas_mr_v1.1已经实现这个。

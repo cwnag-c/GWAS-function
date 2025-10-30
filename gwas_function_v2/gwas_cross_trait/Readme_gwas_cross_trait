@@ -1,0 +1,4 @@
+gwas_cross_trait_v1.1：placo
+gwas_cross_trait_v1.2：2025-10-30；新增了placo.plus的function，详情可见placo作者发的placo.plus,主要是解决样本重叠的
+也修复了一些小bug，比如原来脚本line62，EAF.f1 修复为EAF.f2; 
+placo中不再对Z进行标准化，如有样本重叠，直接进行placo.plus
